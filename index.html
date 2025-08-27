@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hydrasi — Reminder Minum Air</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!--
+    Healthy Water Reminder
+    - Buka index.html di browser (lokal) atau deploy statis (Netlify/Vercel).
+    - Fitur: progress, +/− gelas, pengaturan target/ukuran gelas/reminder, tema, riwayat 7 hari, eksport/import, notifikasi in-app/native.
+    - AI-assisted: struktur & logika front-end.
+  -->
+
+  <div class="container">
+    <header class="card card-header" role="banner">
+      <h1>Hydrasi - Tetap Hydratasi Anda</h1>
+      <div class="header-controls">
+        <label for="theme-select" class="sr-only">Tema</label>
+        <select id="theme-select" aria-label="Pilih tema">
+          <option value="system">Sistem</option>
+          <option value="light">Cahaya</option>
+          <option value="dark">Gelap</option>
+        </select>
+        <button id="theme-toggle" aria-pressed="false" title="Tukar tema">Tukar Tema</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card card-body" id="progress-card" aria-labelledby="progress-title">
+        <h2 id="progress-title">Progress Hari Ini</h2>
+
+        <div class="progress-area" aria-hidden="false">
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="progress-meta">
+            <div>Persentase: <strong id="progress-percentage">0%</strong></div>
+            <div>Tersisa: <strong id="remaining-ml">0 ml</strong></div>
+            <div>Gelas: <strong id="cups-count">0 gelas</strong></div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="add-glass" class="btn-primary">+1 Gelas</button>
+          <button id="subtract-glass" class="btn-secondary">Batal 1 Gelas</button>
+          <button id="export-btn" class="btn-secondary">Ekspor Data</button>
+          <label class="file-label">
+            <input id="import-file" type="file" accept="application/json" />
+            Impor Data
+          </label>
+        </div>
+      </section>
+
+      <section class="card card-body" id="settings" aria-labelledby="settings-title">
+        <h2 id="settings-title">Pengaturan</h2>
+
+        <form id="settings-form">
+          <label for="daily-target">Target Harian (ml)</label>
+          <input id="daily-target" type="number" min="100" step="50" required />
+
+          <label for="cup-size">Ukuran Gelas (ml)</label>
+          <input id="cup-size" type="number" min="50" step="10" required />
+
+          <label for="reminder-minutes">Reminder (menit) — kosong/nonaktif</label>
+          <input id="reminder-minutes" type="number" min="1" step="1" placeholder="Kosongkan untuk matikan" />
+
+          <small id="settings-hint" class="muted">Perubahan disimpan otomatis.</small>
+        </form>
+      </section>
+
+      <section class="card card-body" id="history" aria-labelledby="history-title">
+        <h2 id="history-title">Riwayat 7 Hari</h2>
+        <div class="chart-wrap">
+          <canvas id="history-chart" width="700" height="200" role="img" aria-label="Grafik riwayat 7 hari"></canvas>
+          <div id="chart-tooltip" class="sr-only" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <footer class="card card-body" role="contentinfo">
+      <small>Hydrasi • Simple Water Reminder — dibuat untuk demo capstone</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
