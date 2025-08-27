@@ -18,7 +18,6 @@ function defaultState() {
       dailyTargetMl: 2000,
       cupSizeMl: 250,
       reminderMinutes: null,
-      theme: 'system' // 'system' | 'light' | 'dark'
     },
     history: {} // { "YYYY-MM-DD": { totalMl: number, cups: number } }
   };
