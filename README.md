@@ -33,7 +33,7 @@ Aplikasi web sederhana untuk membantu pengguna menjaga pola minum air dengan mem
 ## 🚀 Cara Menjalankan
 1. **Clone / Unduh repository ini**
    ```bash
-   git clone https://github.com/liventAndDeadnt/Capstone-Project-IBM-Granite.git
+   git clone https://github.com/liventAndDeadnt/Capstone-Project-IBM-Granite
    ```
    atau cukup unduh file `.zip`.
 
